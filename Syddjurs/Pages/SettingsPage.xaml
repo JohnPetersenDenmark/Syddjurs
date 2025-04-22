@@ -17,7 +17,7 @@
 
     <VerticalStackLayout  Margin="20,20,20,20"  >
         <HorizontalStackLayout >
-            <Label 
+            <Label  
             Text="Brug hjemmeadresse"
                 FontSize="16"
                 FontAttributes="Bold"
