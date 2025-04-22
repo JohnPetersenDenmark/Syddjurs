@@ -12,4 +12,31 @@
         </ShellContent>
     </FlyoutItem>
 
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" HeightRequest="150">
+            <Image Source="logofarvergb.jpg" 
+                WidthRequest="400"
+                HeightRequest="100"
+                Aspect="AspectFit">
+            </Image>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout BackgroundColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" HeightRequest="100">
+            <Label
+         FontSize="30"
+         HorizontalOptions="Center"
+         Text="Rettigheder"
+         TextColor="white"
+         VerticalOptions="Center" />
+            <Label
+         FontSize="30"
+         HorizontalOptions="Center"
+         Text="Syddjurs Kommune"
+         TextColor="white"
+         VerticalOptions="Center" />
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
+
 </Shell>
