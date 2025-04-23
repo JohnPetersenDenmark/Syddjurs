@@ -10,26 +10,26 @@ namespace Syddjurs
     [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
     public  class MainActivity : MauiAppCompatActivity
     {
-        //protected override void OnCreate(Bundle? savedInstanceState)
-        //{
-        //    base.OnCreate(savedInstanceState);
+        protected override void OnCreate(Bundle? savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
 
-        //    Microsoft.Maui.ApplicationModel.Platform.Init(this, savedInstanceState);
+            Microsoft.Maui.ApplicationModel.Platform.Init(this, savedInstanceState);
 
-        //    // Set status bar color
-        //    Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#8e1157")); // Your desired hex color
+            // Set status bar color
+            Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#8e1157")); // Your desired hex color
 
-        //    // Optional: Set navigation bar color
-        //    Window.SetNavigationBarColor(Android.Graphics.Color.ParseColor("#8e1157"));
+            // Optional: Set navigation bar color
+            Window.SetNavigationBarColor(Android.Graphics.Color.ParseColor("#8e1157"));
 
-        //    // Optional: Make status bar icons dark or light
-        //    //if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
-        //    //{
-        //    //    var flags = (StatusBarVisibility)Window.DecorView.SystemUiVisibility;
-        //    //    flags |= StatusBarVisibility.LightStatusBar; // Light text = remove this
-        //    //    Window.DecorView.SystemUiVisibility = (StatusBarVisibility)flags;
-        //    //}
-        //}
+            // Optional: Make status bar icons dark or light
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+            //{
+            //    var flags = (StatusBarVisibility)Window.DecorView.SystemUiVisibility;
+            //    flags |= StatusBarVisibility.LightStatusBar; // Light text = remove this
+            //    Window.DecorView.SystemUiVisibility = (StatusBarVisibility)flags;
+            //}
+        }
 
         public void SetSystemBarColorsBasedOnTheme(bool isDarkTheme)
         {
