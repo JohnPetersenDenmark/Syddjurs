@@ -8,10 +8,11 @@
         <BoxView HeightRequest="20" Opacity="0" />
 
         <Label Text="Ret kategori"
+                 Margin="10,0,0,0"
              FontSize="20"
              TextColor="{StaticResource primary}"
              VerticalOptions="Center" 
-             HorizontalOptions="Center" />
+             HorizontalOptions="Start" />
 
         <BoxView HeightRequest="30" Opacity="0" />
 
@@ -128,11 +129,13 @@
         <Label Text="Ny kategori"
              TextColor="{StaticResource primary}"
              FontSize="20"
-             HorizontalOptions="Center" />
+                 Margin="10,0,0,0"
+             HorizontalOptions="Start" />
 
         <BoxView HeightRequest="20" Opacity="0" />
-
-        <Border Stroke="{StaticResource Primary}" StrokeThickness="1" Margin="10,0,10,10">
+        
+        <HorizontalStackLayout  HeightRequest="40" Margin="10,0,0,10" >
+            <Border Stroke="{StaticResource Primary}" StrokeThickness="1" >
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="5" />
             </Border.StrokeShape>
@@ -143,18 +146,8 @@
                                 TextColor="Black"
                                 UnderlineColor="Transparent" />
         </Border>
-
-        <!--<Border Stroke="{StaticResource primary}" StrokeThickness="2" Margin="0,0,0,10">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="5" />
-            </Border.StrokeShape>
-            <Entry x:Name="CategoryxEntryAdd"
-                          Placeholder="Kategori"
-                          BackgroundColor="{StaticResource White}"
-                          TextColor="Black"
-                           />
-        </Border>-->
-
-        <Button Text="Gem" Clicked="OnAddSaveClicked" />
+            <Button Text="Gem" Clicked="OnAddSaveClicked" Padding="0,0,0,0" Margin="10,0,0,10" />
+        </HorizontalStackLayout>
+             
     </VerticalStackLayout>
 </ContentPage>
