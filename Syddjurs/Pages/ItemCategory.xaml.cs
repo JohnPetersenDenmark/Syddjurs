@@ -70,7 +70,23 @@ public partial class ItemCategory : ContentPage, INotifyPropertyChanged
     public ItemCategory()
 	{
 		InitializeComponent();
-	}
+        _httpClient = new HttpClient();
+
+        CategoryList = new ObservableCollection<ItemCategoryDto>(); // Initialize the collection
+        GetCategoriesAsync();
+
+       
+        BindingContext = this;
+
+        Loaded += OnPageLoaded;
+
+    }
+
+    private void OnPageLoaded(object? sender, EventArgs e)
+    {
+        ShowChangeExistingCategoryText = false;
+        IsDropdownVisible = false;
+    }
 
     private void OnCategoryEntryTapped(object sender, EventArgs e)
     {
@@ -85,7 +101,7 @@ public partial class ItemCategory : ContentPage, INotifyPropertyChanged
             SelectedCategory = selected;
             IsDropdownVisible = false;
             ShowChangeExistingCategoryText = true;
-            CategoryEntryChangeText.Text = "ggggggggggggggg";
+            CategoryEntryChangeText.Text = selected.Category;
             CategoryEntryChange.Text = selected.Category;
         }
     }
@@ -104,10 +120,12 @@ public partial class ItemCategory : ContentPage, INotifyPropertyChanged
         try
         {
             var httpClient = new HttpClient();
-            var response = await httpClient.PostAsync("http://192.168.8.105:5057/Home/uploadStampCategory", content);
+            var response = await httpClient.PostAsync("http://192.168.8.105:5096/Home/uploadItemCategory", content);
             if (response.IsSuccessStatusCode)
             {
                 await Application.Current.MainPage.DisplayAlert("Success", "Kategorien er gemt", "OK");
+                SelectedCategory.Category = CategoryEntryChangeText.Text;
+                CategoryEntryChange.Text = CategoryEntryChangeText.Text;
             }
             else
             {
@@ -127,9 +145,8 @@ public partial class ItemCategory : ContentPage, INotifyPropertyChanged
     private async Task GetCategoriesAsync()
     {
         try
-        {
-            // Fetch the image uploads from the API
-            var response = await _httpClient.GetStringAsync("http://192.168.8.105:5057/Home/stampCategories");
+        {            
+            var response = await _httpClient.GetStringAsync("http://192.168.8.105:5096/Home/itemCategories");
 
             // Deserialize the JSON response into a list of ImageUploadDto
             var categories = JsonSerializer.Deserialize<List<ItemCategoryDto>>(response);
@@ -171,7 +188,7 @@ public partial class ItemCategory : ContentPage, INotifyPropertyChanged
         try
         {
             var httpClient = new HttpClient();
-            var response = await httpClient.PostAsync("http://192.168.8.105:5057/Home/uploadStampCategory", content);
+            var response = await httpClient.PostAsync("http://192.168.8.105:5096/Home/uploadItemCategory", content);
             if (response.IsSuccessStatusCode)
             {
                 await Application.Current.MainPage.DisplayAlert("Success", "Kategorien er gemt", "OK");
