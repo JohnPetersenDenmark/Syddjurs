@@ -5,10 +5,17 @@
              xmlns:UtilPages="clr-namespace:Syddjurs.Pages"
              Title="CustomShell">
 
-        <FlyoutItem Title="Indstillinger"  Icon="settings.png" Route="settings">
+    <FlyoutItem Title="Indstillinger"  Icon="settings.png" Route="settings">
 
-        <ShellContent Title="Indstillinger"  Icon="settings.png"                     
+            <ShellContent Title="Indstillinger"  Icon="settings.png"                     
               ContentTemplate="{DataTemplate UtilPages:SettingsPage}" >
+            </ShellContent>
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Kategorier"  Icon="settings.png" Route="categories">
+
+        <ShellContent Title="Kategorier"  Icon="settings.png"                     
+            ContentTemplate="{DataTemplate UtilPages:ItemCategory}" >
         </ShellContent>
     </FlyoutItem>
 

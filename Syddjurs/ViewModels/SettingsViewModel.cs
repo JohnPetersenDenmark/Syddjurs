@@ -13,70 +13,37 @@ namespace Syddjurs.ViewModels
     {
        
 
-        private string? _UseHomeAddress;
-        private string? _HomeStreet;
-        private string? _HomeZip;
-        private string? _HomeCity;
-        private string? _HomeCountry;
+        private string? _userName;
+        private string? _password;
+       
 
-        public string? UseHomeAddress
+        public string? UserName
         {
-            get => _UseHomeAddress;
+            get => _userName;
 
             set
             {
-                Preferences.Set("UseHomeAddress", value);                              
+                _userName = value;
+                Preferences.Set("UserName", value);
+                OnPropertyChanged(nameof(UserName));
             }
 
         }
 
-        public string? HomeStreet
+        public string? Password
         {
-            get => _HomeStreet;
+            get => _password;
 
             set
             {
-                _HomeStreet = value;
-                Preferences.Set("HomeStreet",value);
+                _password = value;
+                Preferences.Set("Password",value);
+                OnPropertyChanged(nameof(Password));    
             }
 
         }
 
-        public string? HomeZip
-        {
-            get => _HomeZip;
-
-            set
-            {
-                _HomeZip = value;
-                Preferences.Set("HomeZip", value);
-            }
-
-        }
-
-        public string? HomeCity
-        {
-            get => _HomeCity;
-
-            set
-            {
-                _HomeCity = value;
-                Preferences.Set("HomeCity", value);
-            }
-
-        }
-
-        public string? HomeCountry
-        {
-            get => _HomeCountry;
-
-            set
-            {
-                _HomeCountry = value;
-                Preferences.Set("HomeCountry", value);
-            }
-
-        }
+      
 
 
         public void OnPropertyChanged([CallerMemberName] string name = "") =>

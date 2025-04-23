@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Syddjurs.Pages.ItemCategory"
+               xmlns:controls="clr-namespace:Syddjurs.CustomControls"
+             Title="ItemCategory">
+    <VerticalStackLayout>
+        <BoxView HeightRequest="20" Opacity="0" />
+
+        <Label Text="Ret kategori"
+             FontSize="20"
+             TextColor="{StaticResource primary}"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" />
+
+        <BoxView HeightRequest="30" Opacity="0" />
+
+        <!-- Custom Dropdown Field -->
+        <Grid Padding="0" HeightRequest="60" Margin="10,0,10,0">
+            <Border Stroke="{StaticResource primary}" StrokeThickness="2">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5" />
+                </Border.StrokeShape>
+
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- Text Display -->
+                    <controls:CustomEntry x:Name="CategoryEntryChange"
+                                        Text="{Binding SelectedCategory.Category}"
+                                        Placeholder="Vælg kategori"
+                                        BackgroundColor="{StaticResource White}"
+                                        TextColor="Black"
+                                        UnderlineColor="Transparent"
+                                        IsReadOnly="True"                                         
+                                        Grid.Column="0"
+                                       >
+                        <!--<Entry.GestureRecognizers>
+                          <TapGestureRecognizer Tapped="OnCategoryEntryTapped" />
+                      </Entry.GestureRecognizers>-->
+                    </controls:CustomEntry>
+
+                    <!-- Arrow Icon -->
+                    <Image Source="arrowdown.jpg"
+                         WidthRequest="40"
+                         HeightRequest="40"
+                         Grid.Column="1"                           
+                         VerticalOptions="Center"
+                         
+                         HorizontalOptions="End" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCategoryEntryTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid IsVisible="{Binding IsDropdownVisible}" Margin="10,0,10,0">
+            <Border Stroke="{StaticResource primary}" StrokeThickness="2">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5" />
+                </Border.StrokeShape>
+                <!-- Dropdown List -->
+                <CollectionView x:Name="DropdownList"              
+               ItemsSource="{Binding CategoryList}"
+               SelectionMode="Single"
+               SelectionChanged="OnCategorySelected"          
+               HorizontalOptions="Start"
+               HeightRequest="100"
+               Margin="7,10,10,10"
+               WidthRequest="200">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Red" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Frame  InputTransparent="True" Margin="5" Padding="10" BorderColor="Gray">
+                                    <Label Text="{Binding Category}" />
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+        </Grid>
+        <!-- Show new text field -->
+        <BoxView HeightRequest="20" Opacity="0" />
+
+        <HorizontalStackLayout  Margin="10,0,0,10" >
+            <Border Stroke="{StaticResource primary}" StrokeThickness="1" >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5" />
+                </Border.StrokeShape>
+                <controls:CustomEntry x:Name="CategoryEntryChangeText"
+                                    Placeholder="Ny tekst for kategori"
+                                    BackgroundColor="{StaticResource White}"
+                                    TextColor="Black"
+                                    WidthRequest="200"
+                                    UnderlineColor="Transparent" />
+            </Border>
+            <Button Text="Gem" Clicked="OnChangeCategorySaveClicked" Margin="10,0,0,10" />
+        </HorizontalStackLayout>
+
+        <BoxView HeightRequest="50" Opacity="0" />
+
+        <Label Text="Ny kategory"
+             TextColor="{StaticResource primary}"
+             FontSize="20"
+             HorizontalOptions="Center" />
+
+        <BoxView HeightRequest="20" Opacity="0" />
+
+        <Border Stroke="{StaticResource primary}" StrokeThickness="2" Margin="0,0,0,10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5" />
+            </Border.StrokeShape>
+            <controls:CustomEntry x:Name="CategoryEntryAdd"
+                                Placeholder="Kategori"
+                                BackgroundColor="{StaticResource White}"
+                                TextColor="Black"
+                                UnderlineColor="Transparent" />
+        </Border>
+
+        <Border Stroke="{StaticResource primary}" StrokeThickness="2" Margin="0,0,0,10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5" />
+            </Border.StrokeShape>
+            <Entry x:Name="CategoryxEntryAdd"
+                          Placeholder="Kategori"
+                          BackgroundColor="{StaticResource White}"
+                          TextColor="Black"
+                           />
+        </Border>
+
+        <Button Text="Gem" Clicked="OnAddSaveClicked" />
+    </VerticalStackLayout>
+</ContentPage>

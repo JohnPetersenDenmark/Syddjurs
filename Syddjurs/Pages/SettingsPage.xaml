@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:viewmodel="clr-namespace:Syddjurs.ViewModels"               
+              xmlns:viewmodel="clr-namespace:Syddjurs.ViewModels"     
+             xmlns:controls="clr-namespace:Syddjurs.CustomControls"
              x:Class="Syddjurs.Pages.SettingsPage"
              Title="SettingsPage">
 
@@ -18,12 +19,10 @@
     <VerticalStackLayout  Margin="20,20,20,20"  >
         <HorizontalStackLayout >
             <Label  
-            Text="Brug hjemmeadresse"
+            Text="Bruger"
                 FontSize="16"
                 FontAttributes="Bold"
             VerticalOptions="Center" />
-
-            <Switch x:Name="homeAddressSwitch"  Toggled="OnToggled" />
         </HorizontalStackLayout>
 
         <VerticalStackLayout x:Name="entriesContainer" Margin="20,20,20,20"  >
@@ -32,36 +31,29 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="5,5,5,5" />
                 </Border.StrokeShape>
-                <Entry Placeholder="Gade" Text="{Binding HomeStreet}" >
-                </Entry>
+
+                <controls:CustomEntry x:Name="UserName" Text="{Binding UserName}" 
+                    Placeholder="Brugernavn" 
+                    BackgroundColor="{StaticResource White}" TextColor="Black" UnderlineColor="Transparent" 
+             >
+                </controls:CustomEntry>
             </Border>
 
             <Border Stroke="Black" StrokeThickness="1" Margin="0, 0,0,10">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="5,5,5,5" />
                 </Border.StrokeShape>
-                <Entry  Placeholder="Postnummer" Text="{Binding HomeZip}"  >
-                </Entry>
+                <controls:CustomEntry x:Name="Password" Text="{Binding Password}" 
+                    Placeholder="Kodeord" 
+                    BackgroundColor="{StaticResource White}" TextColor="Black" UnderlineColor="Transparent" >
+                    
+                </controls:CustomEntry>
             </Border>
 
-            <Border Stroke="Black" StrokeThickness="1" Margin="0, 0,0,10">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="5,5,5,5" />
-                </Border.StrokeShape>
-                <Entry  Placeholder="By" Text="{Binding HomeCity}"  >
-                </Entry>
-            </Border>
+           
 
 
 
-            <Border Stroke="Black" StrokeThickness="1" Margin="0, 0,0,10">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="5,5,5,5" />
-                </Border.StrokeShape>
-                <Entry  Placeholder="Land" Text="{Binding HomeCountry}" >
-                </Entry>
-            </Border>
-            
         </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
