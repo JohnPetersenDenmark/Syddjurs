@@ -5,11 +5,14 @@ using Syddjurs.Models;
 
 namespace Syddjurs.Pages;
 
-public partial class ItemPage : ContentPage, INotifyPropertyChanged
+public partial class ItemPage : ContentPage, IQueryAttributable, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
     private readonly HttpClient _httpClient;
+
+    private ItemDto _selectedItem;
+    private int _selectedItemId;
 
     private bool _isDropdownVisible = true;
     public bool IsDropdownVisible
@@ -84,6 +87,20 @@ public partial class ItemPage : ContentPage, INotifyPropertyChanged
             {
                 _selectedSex = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedSex)));
+            }
+        }
+    }
+
+    private bool _isLendable = true;
+    public bool IsLendable
+    {
+        get => _isLendable;
+        set
+        {
+            if (_isLendable != value)
+            {
+                _isLendable = value;
+                OnPropertyChanged(nameof(IsLendable));
             }
         }
     }
@@ -164,10 +181,54 @@ public partial class ItemPage : ContentPage, INotifyPropertyChanged
         }
     }
 
+    private void CopyEntriesToDto()
+    {
+        var itemDto = new ItemDto();
+
+
+        itemDto.Id = _selectedItemId;
+        itemDto.Name = ItemName.Text;
+        itemDto.Description = ItemDescription.Text;
+        itemDto.Categori = SelectedCategory;
+        itemDto.Sex = SelectedSex;
+        itemDto.Number = int.Parse(NumberOfItemsEntry.Text);
+        itemDto.Color = ColorEntry.Text;
+        itemDto.Size = SizeEntry.Text;
+        itemDto.Lendable = IsLendable;
+    }
+
     //public event PropertyChangedEventHandler PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (query.Count > 0)
+        {
+            var item = query["ItemToEdit"] as ItemDto;
+            if (item != null)
+            {
+                this._selectedItem = item;
+                this._selectedItemId = item.Id;
+            }
+            else
+            {
+                this._selectedItem = null;
+                this._selectedItemId = 0;
+            }
+        }
+        else
+        {
+            this._selectedItem = null;
+            this._selectedItemId = 0;
+
+            //StampDto stampDto = new StampDto();
+            //PopulateStampFields(stampDto);
+            //StampImage.Source = null;
+
+        }
     }
 }

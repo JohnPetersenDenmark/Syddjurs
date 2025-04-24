@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maui.Controls;
+using Syddjurs.Pages;
 
 namespace Syddjurs
 {
@@ -7,6 +8,8 @@ namespace Syddjurs
         public App()
         {
             InitializeComponent();
+
+            Routing.RegisterRoute(nameof(ItemPage), typeof(ItemPage));
 
             var customShell = new CustomShell();
 

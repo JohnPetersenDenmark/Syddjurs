@@ -7,6 +7,39 @@
 
 
     <VerticalStackLayout>
+        <Grid >
+
+            <VerticalStackLayout Margin="10,10,10,10">
+                <Border Stroke="{StaticResource Primary}" StrokeThickness="1" Margin="10,10,10,20" >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <controls:CustomEntry x:Name="ItemName"
+                 Placeholder="Navn"
+                 WidthRequest="200"                
+                 BackgroundColor="{StaticResource White}"
+                 TextColor="Black"
+                 UnderlineColor="Transparent" />
+                </Border>
+
+                <Border Stroke="{StaticResource Primary}" StrokeThickness="1" Margin="10,10,10,20" >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <Editor x:Name="ItemDescription" 
+                        Placeholder="Beskrivelse"
+                        AutoSize="TextChanges"
+                        MaxLength="500"
+                        FontSize="16"
+                        BackgroundColor="White"
+                        TextColor="Black"
+                        Text="{Binding Description}" />
+                </Border>
+            </VerticalStackLayout>
+
+
+
+        </Grid>
         <Grid Padding="0" HeightRequest="40" Margin="10,0,10,-2">
             <Border Stroke="{StaticResource Primary}" StrokeThickness="1">
                 <Border.StrokeShape>
@@ -92,7 +125,7 @@
                 </CollectionView>
             </Border>
         </Grid>
-        <Grid Padding="0" HeightRequest="40" Margin="10,0,10,-2">
+        <Grid Padding="0" HeightRequest="40" Margin="10,20,10,-2">
             <Border Stroke="{StaticResource Primary}" StrokeThickness="1">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="0" />
@@ -108,7 +141,7 @@
                     <!-- Text Display -->
                     <controls:CustomEntry x:Name="SexEntryChange"
                           Text="{Binding SelectedSex}"
-                          Placeholder="Vælg kategori"
+                          Placeholder="Vælg køn"
                           BackgroundColor="{StaticResource White}"
                           TextColor="Black"
                           UnderlineColor="Transparent"
@@ -179,6 +212,20 @@
         </Grid>
         <Grid >
             <VerticalStackLayout Margin="10,10,10,10">
+
+                <Border Stroke="{StaticResource Primary}" StrokeThickness="1" Margin="0,10,0,20" >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <controls:CustomEntry x:Name="NumberOfItemsEntry"
+                        Placeholder="Antal"
+                        WidthRequest="200"
+                        Keyboard="Numeric"
+                        BackgroundColor="{StaticResource White}"
+                        TextColor="Black"
+                        UnderlineColor="Transparent" />
+                </Border>
+
                 <Border Stroke="{StaticResource Primary}" StrokeThickness="1" Margin="0,10,0,20" >
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="5" />
@@ -191,16 +238,29 @@
                          UnderlineColor="Transparent" />
                 </Border>
 
-                <Border Stroke="{StaticResource Primary}" StrokeThickness="1" >
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="5" />
-                </Border.StrokeShape>
-                <controls:CustomEntry x:Name="SizeEntry"
+                <Border Stroke="{StaticResource Primary}" StrokeThickness="1" Margin="0,0,0,20">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <controls:CustomEntry x:Name="SizeEntry"
                     Placeholder="Størrelse"
                      WidthRequest="200"
                     BackgroundColor="{StaticResource White}"
                     TextColor="Black"
                     UnderlineColor="Transparent" />
+                </Border>
+
+                <Border Stroke="{StaticResource Primary}" StrokeThickness="1" Margin="0,0,0,20">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <HorizontalStackLayout Padding="10">
+                        <CheckBox x:Name="lendableCheck"
+                        IsChecked="{Binding IsLendable}" />
+                        <Label Text="For udlån"
+                            VerticalOptions="Center"
+                            />
+                    </HorizontalStackLayout>
                 </Border>
             </VerticalStackLayout>
         </Grid>
