@@ -4,7 +4,14 @@
              x:Class="Syddjurs.CustomShell"
              xmlns:UtilPages="clr-namespace:Syddjurs.Pages"
              Title="CustomShell">
-     
+
+    <FlyoutItem Title="Grej"  Icon="settings.png" Route="items">
+
+        <ShellContent Title="Grej"  Icon="settings.png"                     
+          ContentTemplate="{DataTemplate UtilPages:ItemPage}" >
+        </ShellContent>
+    </FlyoutItem>
+
     <FlyoutItem Title="Kategorier"  Icon="settings.png" Route="categories">
 
         <ShellContent Title="Kategorier"  Icon="settings.png"                     
